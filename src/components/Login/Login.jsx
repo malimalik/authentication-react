@@ -5,24 +5,44 @@ import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 
 const emailReducer = (state, action) => {
+
   if (action.type === "USER_INPUT") {
-    return { value: action.val, isValid: action.val.includes("@") };
+    return { 
+      value: action.val, 
+      isValid: action.val.includes("@"), 
+    };
   }
+
   if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: state.value.includes("@") };
+    return { 
+      value: state.value, 
+      isValid: state.value.includes("@"), 
+    };
   }
-  return { value: "", isValid: false };
+  return { 
+    value: "", 
+    isValid: false,
+  };
 };
 
 const passwordReducer = (state, action) => {
   if (action.type === "PASSWORD_INPUT") {
-    return { value: action.val, isValid: action.val.trim().length > 6 };
+    return { 
+      value: action.val, 
+      isValid: action.val.trim().length > 6, 
+    };
   }
 
   if (action.type === "PASSWORD_BLUR") {
-    return { value: state.value, isValid: state.value.trim().length > 6 };
+    return { 
+      value: state.value, 
+      isValid: state.value.trim().length > 6,
+    };
   }
-  return { value: "", isValid: false };
+  return { 
+    value: "", 
+    isValid: false, 
+  };
 };
 
 const Login = (props) => {
@@ -36,6 +56,9 @@ const Login = (props) => {
   // by putting them into an object, instead of having an email and isValid, we can have {value:  "", isValid: null}, which are the
   // initial values, anyways.
 
+
+  // Steps to create a useReducer() function. The first argument is the reducer, which contains the state variables in one, as an object.
+  // initial arguments of those two 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: "",
     isValid: null,
