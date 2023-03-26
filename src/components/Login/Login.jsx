@@ -37,18 +37,13 @@ const Login = (props) => {
     value: "",
     isValid: null,
   });
+
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
     value: "",
     isValid: null,
   });
 
   const authCtx = useContext(AuthContext);
-
-  if (true) {
-    useEffect(() => {
-      console.log("Hello");
-    }, []);
-  }
 
   useEffect(() => {
     console.log("EFFECT RUNNING");
@@ -95,14 +90,16 @@ const Login = (props) => {
     dispatchPassword({ type: "INPUT_BLUR" });
   };
 
+  // There are only three states under which we fire the submitHandler.
+  // 1. If the email is invalid
+  // 2. If the login is invalid
+  // 3. If both are invalid
   const submitHandler = (event) => {
     event.preventDefault();
     if (formIsValid) {
       authCtx.onLogin(emailState.value, passwordState.value);
-    } else if(!emailIsValid) {
-      
+    } else if (!emailIsValid) {
     } else {
-
     }
   };
 

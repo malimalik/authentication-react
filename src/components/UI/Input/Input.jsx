@@ -14,7 +14,6 @@ const Input = (props) => {
 
   const inputRef = useRef();
 
-  
   return (
     <div
       className={`${classes.control} ${
