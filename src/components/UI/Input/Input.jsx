@@ -14,6 +14,10 @@ const Input = (props) => {
 
   const inputRef = useRef();
 
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   return (
     <div
       className={`${classes.control} ${
@@ -22,12 +26,12 @@ const Input = (props) => {
     >
       <label htmlFor={id}>{label}</label>
       <input
+        ref={inputRef}
         type={type}
         id={id}
         value={emailStateValue}
         onChange={emailChangeHandler}
         onBlur={validateEmailHandler}
-        ref={inputRef}
       />
     </div>
   );
